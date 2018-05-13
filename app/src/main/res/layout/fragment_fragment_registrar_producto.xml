@@ -17,33 +17,36 @@
             android:id="@+id/editText6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:hint="Nombre del Producto
-"/>
+"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/editText7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Cantidad"/>
+            android:hint="Cantidad"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/editText8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:hint="Precio por Unidad
 "
-            />
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Guardar" />
     </LinearLayout>
 </FrameLayout>
