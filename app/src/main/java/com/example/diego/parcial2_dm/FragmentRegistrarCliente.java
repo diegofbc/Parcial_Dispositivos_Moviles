@@ -2,6 +2,7 @@ package com.example.diego.parcial2_dm;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -44,7 +45,6 @@ public class FragmentRegistrarCliente extends Fragment {
     String genero;
     View vista;
     SQLiteHelper con;
-
 
     private OnFragmentInteractionListener mListener;
 
@@ -94,7 +94,6 @@ public class FragmentRegistrarCliente extends Fragment {
         RBH = (RadioButton) vista.findViewById(R.id.H);
         RBM = (RadioButton) vista.findViewById(R.id.M);
 
-
         RBM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,8 +142,8 @@ public class FragmentRegistrarCliente extends Fragment {
                         cedula.setText("");
                         correo.setText("");
                         telefono.setText("");
-                        RBH.toggle();
-                        RBM.toggle();
+                        RBH.setChecked(false);
+                        RBM.setChecked(false);
                     }else{
                         Toast.makeText(getContext(),"En el campo correo, digite un correo valido.",Toast.LENGTH_LONG).show();
                     }

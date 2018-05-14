@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/editText_nombreproducto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -24,29 +24,29 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/editText_cantidadproducto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:ems="10"
             android:hint="Cantidad"
-            android:inputType="textPersonName" />
+            android:inputType="number" />
 
         <EditText
-            android:id="@+id/editText8"
+            android:id="@+id/editText_precioproducto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:ems="10"
             android:hint="Precio por Unidad
 "
-            android:inputType="textPersonName" />
+            android:inputType="number" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button_registrarproducto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Guardar" />
+            android:text="REGISTRAR PRODUCTO" />
     </LinearLayout>
 </FrameLayout>

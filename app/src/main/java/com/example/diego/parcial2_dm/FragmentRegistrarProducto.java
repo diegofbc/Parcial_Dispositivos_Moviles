@@ -1,12 +1,21 @@
 package com.example.diego.parcial2_dm;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.diego.parcial2_dm.BaseDatos.ConstantesBD;
+import com.example.diego.parcial2_dm.Conexion.SQLiteHelper;
 
 
 /**
@@ -26,6 +35,10 @@ public class FragmentRegistrarProducto extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    EditText nombre, cantidad, precio;
+    Button regisproducto;
+    View vista;
+    SQLiteHelper con;
 
     private OnFragmentInteractionListener mListener;
 
@@ -64,7 +77,65 @@ public class FragmentRegistrarProducto extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_registrar_producto, container, false);
+        con = new SQLiteHelper(getContext(), ConstantesBD.NOMBRE_BD,null,1);
+        vista  = inflater.inflate(R.layout.fragment_fragment_registrar_producto, container, false);
+        regisproducto = (Button) vista.findViewById(R.id.button_registrarproducto);
+        nombre = (EditText) vista.findViewById(R.id.editText_nombreproducto);
+        cantidad = (EditText) vista.findViewById(R.id.editText_cantidadproducto);
+        precio = (EditText) vista.findViewById(R.id.editText_precioproducto);
+
+        regisproducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(nombre.getText().toString().equals("")||cantidad.getText().toString().equals("")||precio.getText().toString().equals("")){
+                    Toast.makeText(getContext(),"Algunos campos de encuentran vacios.",Toast.LENGTH_SHORT).show();
+                }else{
+                    if(cantidad.getText().length()>0 && precio.getText().length()>0){
+                        SQLiteDatabase db = con.getReadableDatabase();
+                        String[] parametros={nombre.getText().toString(),cantidad.getText().toString(),precio.getText().toString()};
+                        String[] campos={ConstantesBD.CAMPO_IDCLIENTE};
+                        try {
+                            Cursor cursor = db.query(ConstantesBD.TABLA_PRODUCTO,campos,ConstantesBD.CAMPO_NOMBREPRODUCTO+"=? AND "+ConstantesBD.CAMPO_STOCKPRODUCTO+"=? AND "+ConstantesBD.CAMPO_PRECIOPRODUCTO+"=?",parametros,null,null,null);
+                            boolean band =cursor.moveToFirst();
+                            if(band == true){
+                                cursor.close();
+                                db.close();
+                                Toast.makeText(getContext(),"El producto no se puede registrar porque ya existe en la BD.",Toast.LENGTH_SHORT).show();
+                            }else{
+                                cursor.close();
+                                db.close();
+
+                                Toast.makeText(getContext(),"El producto se registro satisfactoriamente.",Toast.LENGTH_LONG).show();
+                            }
+                        }catch (Exception e){
+                            Toast.makeText(getContext(),"El producto no se encuentra registrado",Toast.LENGTH_LONG).show();
+                        }
+                        nombre.setText("");
+                        cantidad.setText("");
+                        precio.setText("");
+                    }else{
+                        Toast.makeText(getContext(),"En el campo correo, digite un correo valido.",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        });
+        return vista;
+    }
+
+    public void producto(){
+        SQLiteHelper con = new SQLiteHelper(getContext(), ConstantesBD.NOMBRE_BD,null,1);
+        SQLiteDatabase db = con.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(ConstantesBD.CAMPO_NOMBREPRODUCTO, nombre.getText().toString());
+        values.put(ConstantesBD.CAMPO_STOCKPRODUCTO, cantidad.getText().toString());
+        values.put(ConstantesBD.CAMPO_PRECIOPRODUCTO,precio.getText().toString());
+        long idResultante = db.insert(ConstantesBD.TABLA_PRODUCTO,ConstantesBD.CAMPO_IDPRODUCTO,values);
+        if(idResultante == -1){
+            Toast.makeText(getContext(), "Error, el Producto no se pudo realizar.", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(getContext(), "ID Producto: " +idResultante, Toast.LENGTH_SHORT).show();
+        }
+        db.close();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
