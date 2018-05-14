@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editText_nombrecliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -23,25 +23,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:hint="Rep. Password"
-            android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/editText_cedulacliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -50,7 +32,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/editText_correocliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -58,12 +40,55 @@
             android:hint="Correo"
             android:inputType="textEmailAddress" />
 
+        <EditText
+            android:id="@+id/editText_telefonocliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="Telefono"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="Genero" />
+
+        <RadioGroup
+            android:id="@+id/RadioGr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/H"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hombre" />
+            <RadioButton
+                android:id="@+id/M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mujer"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button_RegistrarCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="REGISTRAR CLIENTE" />
+
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Guardar" />
+            android:text="MENU" />
     </LinearLayout>
 
 </FrameLayout>
