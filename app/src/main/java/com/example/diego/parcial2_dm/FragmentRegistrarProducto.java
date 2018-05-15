@@ -93,7 +93,7 @@ public class FragmentRegistrarProducto extends Fragment {
                     if(cantidad.getText().length()>0 && precio.getText().length()>0){
                         SQLiteDatabase db = con.getReadableDatabase();
                         String[] parametros={nombre.getText().toString(),cantidad.getText().toString(),precio.getText().toString()};
-                        String[] campos={ConstantesBD.CAMPO_IDCLIENTE};
+                        String[] campos={ConstantesBD.CAMPO_IDPRODUCTO};
                         try {
                             Cursor cursor = db.query(ConstantesBD.TABLA_PRODUCTO,campos,ConstantesBD.CAMPO_NOMBREPRODUCTO+"=? AND "+ConstantesBD.CAMPO_STOCKPRODUCTO+"=? AND "+ConstantesBD.CAMPO_PRECIOPRODUCTO+"=?",parametros,null,null,null);
                             boolean band =cursor.moveToFirst();
@@ -104,8 +104,7 @@ public class FragmentRegistrarProducto extends Fragment {
                             }else{
                                 cursor.close();
                                 db.close();
-
-                                Toast.makeText(getContext(),"El producto se registro satisfactoriamente.",Toast.LENGTH_LONG).show();
+                                registrarproducto();
                             }
                         }catch (Exception e){
                             Toast.makeText(getContext(),"El producto no se encuentra registrado",Toast.LENGTH_LONG).show();
@@ -122,7 +121,7 @@ public class FragmentRegistrarProducto extends Fragment {
         return vista;
     }
 
-    public void producto(){
+    public void registrarproducto(){
         SQLiteHelper con = new SQLiteHelper(getContext(), ConstantesBD.NOMBRE_BD,null,1);
         SQLiteDatabase db = con.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -131,9 +130,10 @@ public class FragmentRegistrarProducto extends Fragment {
         values.put(ConstantesBD.CAMPO_PRECIOPRODUCTO,precio.getText().toString());
         long idResultante = db.insert(ConstantesBD.TABLA_PRODUCTO,ConstantesBD.CAMPO_IDPRODUCTO,values);
         if(idResultante == -1){
-            Toast.makeText(getContext(), "Error, el Producto no se pudo realizar.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Error, el Producto no se registrar.", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(getContext(), "ID Producto: " +idResultante, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "ID Producto: " +idResultante, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"El producto se registro satisfactoriamente.",Toast.LENGTH_LONG).show();
         }
         db.close();
     }

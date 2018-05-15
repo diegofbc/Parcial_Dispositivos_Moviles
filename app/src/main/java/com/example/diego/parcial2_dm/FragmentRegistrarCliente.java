@@ -80,8 +80,7 @@ public class FragmentRegistrarCliente extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         con = new SQLiteHelper(getContext(), ConstantesBD.NOMBRE_BD,null,1);
         vista  = inflater.inflate(R.layout.fragment_fragment_registrar_cliente, container, false);
@@ -100,7 +99,7 @@ public class FragmentRegistrarCliente extends Fragment {
                 int radioID = RG.getCheckedRadioButtonId();
                 RBM = vista.findViewById(radioID);
                 genero = RBM.getText().toString();
-                Toast.makeText(getContext(),"Radio: "+ RBM.getText().toString(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"Radio: "+ RBM.getText().toString(),Toast.LENGTH_LONG).show();
             }
         });
         RBH.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +108,7 @@ public class FragmentRegistrarCliente extends Fragment {
                 int radioID = RG.getCheckedRadioButtonId();
                 RBH = vista.findViewById(radioID);
                 genero = RBH.getText().toString();
-                Toast.makeText(getContext(),"Radio: "+ RBH.getText().toString(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"Radio: "+ RBH.getText().toString(),Toast.LENGTH_LONG).show();
             }
         });
         registrarcliente.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +132,6 @@ public class FragmentRegistrarCliente extends Fragment {
                                 cursor.close();
                                 db.close();
                                 registrar();
-                                Toast.makeText(getContext(),"El cliente se registro satisfactoriamente.",Toast.LENGTH_LONG).show();
                             }
                         }catch (Exception e){
                             Toast.makeText(getContext(),"El cliente no se encuentra registrado",Toast.LENGTH_LONG).show();
@@ -166,7 +164,8 @@ public class FragmentRegistrarCliente extends Fragment {
         if(idResultante == -1){
             Toast.makeText(getContext(), "Error, el Cliente no se pudo realizar.", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(getContext(), "ID Cliente: " + idResultante, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "ID Cliente: " + idResultante, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"El cliente se registro satisfactoriamente.",Toast.LENGTH_LONG).show();
         }
         db.close();
     }

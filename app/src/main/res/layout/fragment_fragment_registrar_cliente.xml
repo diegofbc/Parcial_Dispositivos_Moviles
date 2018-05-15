@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="Nombre"
+            android:hint="NOMBRE COMPLETO"
             android:inputType="textPersonName" />
 
         <EditText
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:ems="10"
-            android:hint="Cedula"
+            android:hint="CEDULA"
             android:inputType="number" />
 
         <EditText
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:ems="10"
-            android:hint="Correo"
+            android:hint="CORREO"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:ems="10"
-            android:hint="Telefono"
+            android:hint="TELEFONO"
             android:inputType="phone" />
 
         <EditText
@@ -56,7 +56,7 @@
             android:editable="false"
             android:ems="10"
             android:enabled="false"
-            android:hint="Genero" />
+            android:hint="GENERO" />
 
         <RadioGroup
             android:id="@+id/RadioGr"

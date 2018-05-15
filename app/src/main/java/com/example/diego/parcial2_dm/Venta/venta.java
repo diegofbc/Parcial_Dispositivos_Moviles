@@ -7,7 +7,7 @@ public class venta {
     private int id_venta;
     private int Forkey_idproducto;
     private int Forkey_idcliente;
-    private Date fecha;
+    private String fecha;
     private int total;
     private int cantidad;
 
@@ -36,11 +36,11 @@ public class venta {
         Forkey_idcliente = forkey_idcliente;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

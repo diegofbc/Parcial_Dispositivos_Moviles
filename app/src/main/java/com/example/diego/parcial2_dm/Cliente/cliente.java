@@ -10,9 +10,7 @@ public class cliente {
     private String telefono;
 
 
-    public int getIdcliente() {
-        return idcliente;
-    }
+    public int getIdcliente() {return idcliente;}
 
     public void setIdcliente(int idcliente) {
         this.idcliente = idcliente;
